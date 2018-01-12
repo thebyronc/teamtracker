@@ -27,14 +27,14 @@ public class TeamTest {
     public void TeamInitiatesWithName_true() {
         String[] members = {"Member 1", "Member 2"};
         Team team = new Team("TestName", members, "Test Description");
-        assertArrayEquals(members, team.getMembers());
+        assertEquals("TestName", team.getTeamName());
     }
 
     @Test
     public void TeamInitiatesWithMembers_true() {
         String[] members = {"Member 1", "Member 2"};
         Team team = new Team("TestName", members, "Test Description");
-        assertEquals("TestName", team.getTeamName());
+        assertArrayEquals(members, team.getMembers());
     }
 
 }
