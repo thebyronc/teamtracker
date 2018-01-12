@@ -19,6 +19,6 @@ public class Team {
         return teamName;
     }
     public String[] getMembers() {
-        return null;
+        return members;
     }
 }
