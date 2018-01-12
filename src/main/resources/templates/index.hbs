@@ -3,9 +3,12 @@
     <h2>Team list!</h2>
 
     {{#if teams}}
+        <p>Current Teams:</p>
         {{#each teams}}
-            <p>Current Teams:</p>
-            <p>{{ teamName }} <a href="/teams/{{id}}">read more...</a></p>
+            <p>{{ teamName }} </p>
+            <p>{{ members }} </p>
+            <p>{{ description }} </p>
+            <a href="/teams/{{id}}">read more...</a>
         {{/each}}
     {{else}}
         <p>No Teams!</p>

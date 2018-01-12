@@ -6,6 +6,7 @@ public class Team {
     private String teamName;
     private ArrayList<String> members;
     private String description;
+    private boolean published;
     private static ArrayList<Team> instances = new ArrayList<>();
     private int id;
 
@@ -13,6 +14,8 @@ public class Team {
         this.teamName = teamName;
         this.members = members;
         this.description = description;
+        this.published = false;
+        instances.add(this);
         this.id = instances.size();
     }
     public String getTeamName() {
