@@ -15,4 +15,7 @@ public class Team {
         this.description = description;
         this.id = instances.size();
     }
+    public String getTeamName() {
+        return null;
+    }
 }

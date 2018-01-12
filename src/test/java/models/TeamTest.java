@@ -17,10 +17,16 @@ public class TeamTest {
     }
 
     @Test
-    public void NewTeamObjectIsCreated_true() throws Exception {
+    public void NewTeamObjectIsCreatedCorrectly_true() throws Exception {
         String[] members = {"test", "test"};
         Team team = new Team("test", members, "test");
         assertEquals(true, team instanceof Team);
+    }
+    @Test
+    public void TeamInitiatesWithName_true() {
+        String[] members = {"test", "test"};
+        Team team = new Team("test", members, "test");
+        assertEquals("test", team.getTeamName());
     }
 
 }
