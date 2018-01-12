@@ -27,4 +27,7 @@ public class Team {
     public int getID() {
         return id;
     }
+    public void update(String teamName) {
+        this.teamName = teamName;
+    }
 }
