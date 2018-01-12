@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public class Team {
     private String teamName;
-    private String[] members;
+    private ArrayList<String> members;
     private String description;
     private static ArrayList<Team> instances = new ArrayList<>();
     private int id;
 
-    public Team(String teamName, String[] members, String description){
+    public Team(String teamName, ArrayList<String> members, String description){
         this.teamName = teamName;
         this.members = members;
         this.description = description;
@@ -18,10 +18,13 @@ public class Team {
     public String getTeamName() {
         return teamName;
     }
-    public String[] getMembers() {
+    public ArrayList<String> getMembers() {
         return members;
     }
     public String getDescription() {
         return description;
+    }
+    public int getID() {
+        return id;
     }
 }
