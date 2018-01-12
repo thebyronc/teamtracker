@@ -30,4 +30,7 @@ public class Team {
     public void update(String teamName) {
         this.teamName = teamName;
     }
+    public static ArrayList<Team> getAll(){
+        return instances;
+    }
 }
