@@ -37,4 +37,11 @@ public class TeamTest {
         assertArrayEquals(members, team.getMembers());
     }
 
+    @Test
+    public void TeamInitiatesWithDescription_true() {
+        String[] members = {"Member 1", "Member 2"};
+        Team team = new Team("TestName", members, "Test Description");
+        assertEquals("Test Description", team.getDescription());
+    }
+
 }

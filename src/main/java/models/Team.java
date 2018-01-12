@@ -21,4 +21,7 @@ public class Team {
     public String[] getMembers() {
         return members;
     }
+    public String getDescription() {
+        return teamName;
+    }
 }
