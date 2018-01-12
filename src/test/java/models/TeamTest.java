@@ -19,8 +19,8 @@ public class TeamTest {
     @Test
     public void NewTeamObjectIsCreated_true() throws Exception {
         String[] members = {"test", "test"};
-        Team post = new Team("test", members, "test");
-        assertEquals(true, post instanceof Test);
+        Team team = new Team("test", members, "test");
+        assertEquals(true, team instanceof Team);
     }
 
 }
