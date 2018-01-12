@@ -2,6 +2,7 @@ package models;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 
 import static org.junit.Assert.*;
 
@@ -14,4 +15,12 @@ public class TeamTest {
     @After
     public void tearDown() throws Exception {
     }
+
+    @Test
+    public void NewTeamObjectIsCreated_true() throws Exception {
+        String[] members = {"test", "test"};
+        Team post = new Team("test", members, "test");
+        assertEquals(true, post instanceof Test);
+    }
+
 }
