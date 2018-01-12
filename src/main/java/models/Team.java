@@ -16,6 +16,9 @@ public class Team {
         this.id = instances.size();
     }
     public String getTeamName() {
+        return teamName;
+    }
+    public String[] getMembers() {
         return null;
     }
 }

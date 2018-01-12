@@ -18,15 +18,23 @@ public class TeamTest {
 
     @Test
     public void NewTeamObjectIsCreatedCorrectly_true() throws Exception {
-        String[] members = {"test", "test"};
-        Team team = new Team("test", members, "test");
+        String[] members = {"Member 1", "Member 2"};
+        Team team = new Team("TestName", members, "Test Description");
         assertEquals(true, team instanceof Team);
     }
+
     @Test
     public void TeamInitiatesWithName_true() {
-        String[] members = {"test", "test"};
-        Team team = new Team("test", members, "test");
-        assertEquals("test", team.getTeamName());
+        String[] members = {"Member 1", "Member 2"};
+        Team team = new Team("TestName", members, "Test Description");
+        assertArrayEquals(members, team.getMembers());
+    }
+
+    @Test
+    public void TeamInitiatesWithMembers_true() {
+        String[] members = {"Member 1", "Member 2"};
+        Team team = new Team("TestName", members, "Test Description");
+        assertEquals("TestName", team.getTeamName());
     }
 
 }
