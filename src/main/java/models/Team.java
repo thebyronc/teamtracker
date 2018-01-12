@@ -27,7 +27,7 @@ public class Team {
     public String getDescription() {
         return description;
     }
-    public int getID() {
+    public int getId() {
         return id;
     }
     public void update(String teamName) {
@@ -35,5 +35,8 @@ public class Team {
     }
     public static ArrayList<Team> getAll(){
         return instances;
+    }
+    public static void clearAllTeams() {
+        instances.clear();
     }
 }
