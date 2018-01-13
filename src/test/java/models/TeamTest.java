@@ -49,7 +49,7 @@ public class TeamTest {
         members.add("Member 1");
         members.add("Member 2");
         Team team = new Team("TestName", members, "Test Description");
-        assertEquals(members, team.getMembers());
+        assertEquals("<li>Member 1</li><li>Member 2</li>",team.getMembers());
     }
 
     @Test
@@ -69,6 +69,11 @@ public class TeamTest {
         team.update("New Name");
         assertEquals(formerId, team.getId());
         assertNotEquals(oldTeam, team.getTeamName());
+    }
+    @Test
+    public void getMemberCount() throws Exception {
+        Team team = setupNewTeam();
+        assertEquals(2, team.getMemberCount());
     }
 
 }

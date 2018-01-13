@@ -1,14 +1,16 @@
 {{#partial "content"}}
 
     {{#if editTeam}}
-    <h1>Edit this Team!</h1>
+    <h2>EDIT TEAM</h2>
     <form action="/teams/{{editTeam.id}}/update" method="post" class="w3-container w3-card w3-padding-32 w3-white">
     <div class="w3-section">
-        <label for="teamName">Edit this post's content</label>
+        <label for="teamName">New team name:</label>
         <input class="w3-input" id="teamName" name="teamName" type="text" value="{{editTeam.teamName}}">
     </div>
+        <button type="submit" class="w3-btn btn-color">Update Team!</button>
+    </form>
     {{else}}
-    <h1>Add a new Team!</h1>
+    <h2>ADD NEW TEAM</h2>
     <form action="/teams/new" method="post" class="w3-container w3-card w3-padding-32 w3-white">
         <div class="w3-section">
             <label for="teamName">Team Name</label>
@@ -22,9 +24,10 @@
             <label for="description">Team Description</label>
             <input class="w3-input" id="description" name="description" type="text">
         </div>
-    {{/if}}
         <button type="submit" class="w3-btn btn-color">Create Team!</button>
     </form>
+    {{/if}}
+
 {{/partial}}
 
 {{> layout.hbs}}
