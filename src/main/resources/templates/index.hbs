@@ -1,21 +1,23 @@
 {{#partial "content"}}
 
-    <h2>Team list!</h2>
+    <h2>TEAMS</h2>
 
     {{#if teams}}
-        <p>Current Teams:</p>
         {{#each teams}}
             <div class="w3-card-4">
 
                 <header class="w3-container w3-light-grey">
-                    <h3>{{ teamName }} <a href="/teams/{{id}}" class="nameEdit"> edit team name...</a></h3>
+                    <h3>{{ teamName }} </h3>
                 </header>
 
                 <div class="w3-container">
-                    <p>1 new friend request</p>
+                    <h5>TEAM DESCRIPTION:</h5>
+                    <p>{{description}}</p>
                     <hr>
-                    <p>{{descriptio}}</p>
+
+                    <p>{{memberCount}} members in team</p>
                 </div>
+                <button class="w3-button w3-block w3-dark-grey"><a href="/teams/{{id}}" >View Team Details</a></button>
 
             </div>
         {{/each}}

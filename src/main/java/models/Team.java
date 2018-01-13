@@ -28,6 +28,9 @@ public class Team {
         }
         return results;
     }
+    public int getMemberCount(){
+        return members.size();
+    }
     public String getDescription() {
         return description;
     }
