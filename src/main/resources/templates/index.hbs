@@ -5,10 +5,19 @@
     {{#if teams}}
         <p>Current Teams:</p>
         {{#each teams}}
-            <p>{{ teamName }} </p>
-            <p>{{ members }} </p>
-            <p>{{ description }} </p>
-            <a href="/teams/{{id}}">read more...</a>
+            <div class="w3-card-4">
+
+                <header class="w3-container w3-light-grey">
+                    <h3>{{ teamName }} <a href="/teams/{{id}}" class="nameEdit"> edit team name...</a></h3>
+                </header>
+
+                <div class="w3-container">
+                    <p>1 new friend request</p>
+                    <hr>
+                    <p>{{descriptio}}</p>
+                </div>
+
+            </div>
         {{/each}}
     {{else}}
         <p>No Teams!</p>

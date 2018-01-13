@@ -23,10 +23,9 @@ IntelliJ IDEA
 | Behavior | Input | Expected Behavior |
 | :------------- | :------------- | :------------- |
 | Create a Team | Create new event with name "Dragons" | Created event is name "Dragons" |
-| Add team members to an team | Creating an team with 2 team members "Jon" and "Byron" | Team has listed team members "Jon" and "Byron" |
-| Add description to an team | Creating an team with the description "Cute lizards" | Team has the description of "Cute Lizards" |
+| Add team members to a team | Creating an team with 2 team members "Jon" and "Byron" | Team has listed team members "Jon" and "Byron" |
+| Add description to a team | Creating an team with the description "Cute lizards" | Team has the description of "Cute Lizards" |
 | Team names can be changed | Changing a team name from "Dragons" to "Small Dragons" | all references to the team name "Dragons" is updated to "Small Dragons" |
-| A team can be deleted | Delete a team | Removes the team and all references to the deleted team |
 
 ## Built With
 

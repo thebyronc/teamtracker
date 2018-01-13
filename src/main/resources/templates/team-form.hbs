@@ -1,21 +1,29 @@
 {{#partial "content"}}
 
-    {{#if editPost}}
+    {{#if editTeam}}
     <h1>Edit this Team!</h1>
-    <form action="/posts/{{editPost.id}}/update" method="post">
-        <label for="content">Edit this post's content</label>
-        <input id="content" name="content" type="text" value="{{editPost.content}}">
+    <form action="/teams/{{editTeam.id}}/update" method="post" class="w3-container w3-card w3-padding-32 w3-white">
+    <div class="w3-section">
+        <label for="teamName">Edit this post's content</label>
+        <input class="w3-input" id="teamName" name="teamName" type="text" value="{{editTeam.teamName}}">
+    </div>
     {{else}}
     <h1>Add a new Team!</h1>
-    <form action="/teams/new" method="post">
-        <label for="teamName">Team Name</label>
-        <input id="teamName" name="teamName" type="text">
-        <label for="members">Team Members</label>
-        <input id="members" name="members" type="text">
-        <label for="description">Team Description</label>
-        <input id="description" name="description" type="text">
+    <form action="/teams/new" method="post" class="w3-container w3-card w3-padding-32 w3-white">
+        <div class="w3-section">
+            <label for="teamName">Team Name</label>
+            <input class="w3-input" id="teamName" name="teamName" type="text">
+        </div>
+        <div class="w3-section">
+            <label for="members">Team Members(Separate each member by a ",").</label>
+            <input class="w3-input" id="members" name="members" type="text">
+        </div>
+        <div class="w3-section">
+            <label for="description">Team Description</label>
+            <input class="w3-input" id="description" name="description" type="text">
+        </div>
     {{/if}}
-        <button type="submit" class="btn btn-default">Go!</button>
+        <button type="submit" class="w3-btn btn-color">Create Team!</button>
     </form>
 {{/partial}}
 

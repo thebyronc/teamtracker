@@ -21,8 +21,12 @@ public class Team {
     public String getTeamName() {
         return teamName;
     }
-    public ArrayList<String> getMembers() {
-        return members;
+    public String getMembers() {
+        String results = "";
+        for(String eachMember:members){
+            results += "<li>" + eachMember + "</li>";
+        }
+        return results;
     }
     public String getDescription() {
         return description;
@@ -38,5 +42,8 @@ public class Team {
     }
     public static void clearAllTeams() {
         instances.clear();
+    }
+    public static Team findById(int id){
+        return instances.get(id-1);
     }
 }
