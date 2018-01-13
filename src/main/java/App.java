@@ -18,6 +18,11 @@ public class App {
             return new ModelAndView(model, "team-form.hbs");
         }, new HandlebarsTemplateEngine());
 
+        get("/about", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "about.hbs");
+        }, new HandlebarsTemplateEngine());
+
         //post: process new team form
         post("/teams/new", (request, response) -> { //URL to make new post on POST route
             Map<String, Object> model = new HashMap<>();
