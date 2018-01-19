@@ -1,10 +1,10 @@
 package dao;
-
+import models.Member;
+import models.Team;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 
-import java.lang.reflect.Member;
 
 public class Sql2oMemberDao implements MemberDao {
     private final Sql2o sql2o;
@@ -15,7 +15,16 @@ public class Sql2oMemberDao implements MemberDao {
 
     @Override
     public void add(Member member) {
-
+        String sql = "INSERT INTO members (name, email, teamId) VALUES (:name, :email, :teamId)";
+        try(Connection con = sql2o.open()){
+            int id = (int) con.createQuery(sql)
+                    .bind(member)
+                    .executeUpdate()
+                    .getKey();
+            member.setId(id);
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
     }
 
     @Override
