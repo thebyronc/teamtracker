@@ -26,6 +26,7 @@ IntelliJ IDEA
 | Add team members to a team | Creating an team with 2 team members "Jon" and "Byron" | Team has listed team members "Jon" and "Byron" |
 | Add description to a team | Creating an team with the description "Cute lizards" | Team has the description of "Cute Lizards" |
 | Team names can be changed | Changing a team name from "Dragons" to "Small Dragons" | all references to the team name "Dragons" is updated to "Small Dragons" |
+| Add member info (email, age, phone number) | Adding a member | Options to add member details such as email, age, and phone number is available |
 
 ## Built With
 
