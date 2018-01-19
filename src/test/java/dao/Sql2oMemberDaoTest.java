@@ -42,6 +42,15 @@ public class Sql2oMemberDaoTest {
         memberDao.add(member);
         assertNotEquals(originalMemberId, member.getId());
     }
+    @Test
+    public void membersCanBeFoundByTeamId() {
+        Team team = setupNewTeam();
+        Member member1 = new Member(team.getId(), "Byron", "thebyronc@gmail.com");
+        Member member2 = new Member(team.getId(), "Byron", "thebyronc@gmail.com");
+        memberDao.add(member1);
+        memberDao.add(member2);
+        assertEquals(2, memberDao.getAllMemberByTeam(team.getId()));
+    }
 
     public Team setupNewTeam() {
         return new Team("Team 1", "One guy", "Team Description Example 1");
