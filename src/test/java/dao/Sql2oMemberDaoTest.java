@@ -1,12 +1,12 @@
 package dao;
-
+import models.Member;
+import models.Team;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 import org.sql2o.Sql2o;
-
-import java.sql.Connection;
-
 import static org.junit.Assert.*;
+import org.sql2o.Connection;
 
 public class Sql2oMemberDaoTest {
     private Sql2oMemberDao memberDao;
@@ -20,11 +20,23 @@ public class Sql2oMemberDaoTest {
         memberDao = new Sql2oMemberDao(sql2o);
         teamDao = new Sql2oTeamDao(sql2o);
 
-        //keep connection open through entire test so it does not get erased
         conn = sql2o.open();
     }
 
     @After
     public void tearDown() throws Exception {
+        conn.close();
+    }
+
+    @Test
+    public void addingMemberSetsIdToTeam() throws Exception {
+        Team team = setupNewTeam();
+        Member member = new Member(team.getId(),"Byron", "thebyronc@gmail.com");
+//        memberDao.add(member);
+        assertEquals(team.getId(), member.getTeamId());
+    }
+
+    public Team setupNewTeam() {
+        return new Team("Team 1", "One guy", "Team Description Example 1");
     }
 }
