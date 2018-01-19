@@ -40,6 +40,14 @@ public class Sql2oTeamDaoTest {
     }
 
     @Test
+    public void existingTeamCanBeFoundById() throws Exception {
+        Team team = setupNewTeam();
+        teamDao.add(team);
+        Team foundTeam = teamDao.findById(team.getId());
+        assertEquals(team, foundTeam);
+    }
+
+    @Test
     public void updateChangesTeamName() throws Exception {
         String initialTeamName = "Team 1";
         ArrayList<String> members = new ArrayList<>(Arrays.asList("Member 1","Member 2"));

@@ -20,12 +20,13 @@ public class Sql2oTeamDao implements TeamDao {
         String sql = "INSERT INTO teams (teamName, members, description) VALUES (:teamName, :members, :description)";
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql)
-                    .addParameter("teamName", team.getTeamName())
-                    .addParameter("members", team.getMembers())
-                    .addParameter("description", team.getDescription())
-                    .addColumnMapping("TEAMNAME", "teamName")
-                    .addColumnMapping("MEMBERS", "members")
-                    .addColumnMapping("DESCRIPTION", "description")
+                    .bind(team)
+//                    .addParameter("teamName", team.getTeamName())
+//                    .addParameter("members", team.getMembers())
+//                    .addParameter("description", team.getDescription())
+//                    .addColumnMapping("TEAMNAME", "teamName")
+//                    .addColumnMapping("MEMBERS", "members")
+//                    .addColumnMapping("DESCRIPTION", "description")
                     .executeUpdate()
                     .getKey();
             team.setId(id);
@@ -44,8 +45,8 @@ public class Sql2oTeamDao implements TeamDao {
     public Team findById(int id){
         try(Connection con = sql2o.open()){
             return con.createQuery("SELECT * FROM teams WHERE id = :id")
-                    .addParameter("id", id) //key/value pair, key must match above
-                    .executeAndFetchFirst(Team.class); //fetch an individual item
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Team.class);
         }
     }
 
