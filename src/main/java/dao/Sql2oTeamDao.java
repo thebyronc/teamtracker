@@ -14,6 +14,31 @@ public class Sql2oTeamDao implements TeamDao {
 
     @Override
     public void add(Team team) {
-
+        String sql = "INSERT INTO teams (teamName, members, description) VALUES (:teamName, :members, :description)";
+        try (Connection con = sql2o.open()) {
+            int id = (int) con.createQuery(sql)
+                    .addParameter("teamName", team.getTeamName())
+                    .addParameter("members", team.getMembers())
+                    .addParameter("description", team.getDescription())
+                    .addColumnMapping("TEAMNAME", "teamName")
+                    .addColumnMapping("MEMBERS", "members")
+                    .addColumnMapping("DESCRIPTION", "description")
+                    .executeUpdate()
+                    .getKey();
+            team.setId(id);
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
     }
+
+    @Override
+    public void clearAllTeams() {
+        String sql = "DELETE from teams";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql).executeUpdate();
+        } catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+    }
+
 }

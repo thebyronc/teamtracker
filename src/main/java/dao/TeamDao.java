@@ -11,4 +11,5 @@ public interface TeamDao {
     //UPDATE
 
     //DELETE
+    void clearAllTeams();
 }

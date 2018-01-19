@@ -21,9 +21,8 @@ public class Sql2oTeamDaoTest {
     public void setUp() throws Exception {
         String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
-        teamDao = new Sql2oTeamDao(sql2o); //ignore me for now
+        teamDao = new Sql2oTeamDao(sql2o);
 
-        //keep connection open through entire test so it does not get erased.
         conn = sql2o.open();
     }
 

@@ -1,13 +1,13 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Team {
     private String teamName;
     private ArrayList<String> members;
     private String description;
     private boolean published;
-    private static ArrayList<Team> instances = new ArrayList<>();
     private int id;
 
     public Team(String teamName, ArrayList<String> members, String description){
@@ -15,8 +15,13 @@ public class Team {
         this.members = members;
         this.description = description;
         this.published = false;
-        instances.add(this);
-        this.id = instances.size();
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    public int getId() {
+        return id;
     }
     public String getTeamName() {
         return teamName;
@@ -34,19 +39,27 @@ public class Team {
     public String getDescription() {
         return description;
     }
-    public int getId() {
-        return id;
-    }
+
     public void update(String teamName) {
         this.teamName = teamName;
     }
-    public static ArrayList<Team> getAll(){
-        return instances;
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Team team = (Team) o;
+        return published == team.published &&
+                id == team.id &&
+                Objects.equals(teamName, team.teamName) &&
+                Objects.equals(members, team.members) &&
+                Objects.equals(description, team.description);
     }
-    public static void clearAllTeams() {
-        instances.clear();
-    }
-    public static Team findById(int id){
-        return instances.get(id-1);
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(teamName, members, description, published, id);
     }
 }
