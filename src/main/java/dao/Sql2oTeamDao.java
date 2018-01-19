@@ -5,6 +5,9 @@ import org.sql2o.Sql2o;
 import org.sql2o.Connection;
 import org.sql2o.Sql2oException;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Sql2oTeamDao implements TeamDao {
     private final Sql2o sql2o;
 
@@ -26,6 +29,36 @@ public class Sql2oTeamDao implements TeamDao {
                     .executeUpdate()
                     .getKey();
             team.setId(id);
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
+    @Override
+    public List<Team> getAll(){
+        try(Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM teams") //raw sql
+                    .executeAndFetch(Team.class); //fetch a list
+        }
+    }
+    @Override
+    public Team findById(int id){
+        try(Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM teams WHERE id = :id")
+                    .addParameter("id", id) //key/value pair, key must match above
+                    .executeAndFetchFirst(Team.class); //fetch an individual item
+        }
+    }
+
+    @Override
+    public void update(int id, String teamName, ArrayList<String> members, String description) {
+        String sql = "UPDATE teams Set (teamName, members, description) = (:teamName, :members, :description) WHERE id=:id";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("teamName", teamName)
+                    .addParameter("members", members)
+                    .addParameter("description", description)
+                    .addParameter("id", id)
+                    .executeUpdate();
         } catch (Sql2oException ex) {
             System.out.println(ex);
         }
