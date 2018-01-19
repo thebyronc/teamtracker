@@ -39,11 +39,25 @@ public class Sql2oTeamDaoTest {
         assertNotEquals(originalTeamId, team.getId());
     }
 
+    @Test
+    public void updateChangesTeamName() throws Exception {
+        String initialTeamName = "Team 1";
+        ArrayList<String> members = new ArrayList<>(Arrays.asList("Member 1","Member 2"));
+        Team team = new Team(initialTeamName, members, "Team Description Example 1");
+        teamDao.add(team);
+
+        teamDao.update(team.getId(), "Mocha", members, "Team Description Example 1");
+        Team updatedAnimal = teamDao.findById(team.getId());
+        assertNotEquals(initialTeamName, updatedAnimal.getTeamName());
+    }
+
 
     public Team setupNewTeam() {
         ArrayList<String> members = new ArrayList<>(Arrays.asList("Member 1","Member 2"));
         return new Team("Team 1", members, "Team Description Example 1");
     }
+
+
 }
 
 
