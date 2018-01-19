@@ -40,7 +40,7 @@ public class Sql2oMemberDaoTest {
         Member member = new Member(team.getId(), "Byron", "thebyronc@gmail.com");
         int originalMemberId = member.getId();
         memberDao.add(member);
-        assertEquals(originalMemberId, member.getId());
+        assertNotEquals(originalMemberId, member.getId());
     }
 
     public Team setupNewTeam() {
