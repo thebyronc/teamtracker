@@ -12,19 +12,20 @@ public class App {
     public static void main(String[] args) {
         staticFileLocation("/public");
 
-        //get: show create new team form
-        get("/teams/new", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "team-form.hbs");
-        }, new HandlebarsTemplateEngine());
-
         get("/about", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "about.hbs");
         }, new HandlebarsTemplateEngine());
 
-        //post: process new team form
-        post("/teams/new", (request, response) -> { //URL to make new post on POST route
+
+        // CREATE
+
+        get("/teams/new", (req, res) -> { //show create new team form
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "team-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        post("/teams/new", (request, response) -> { //process new team form
             Map<String, Object> model = new HashMap<>();
             String teamName = request.queryParams("teamName");
             String member = request.queryParams("members");
@@ -36,17 +37,16 @@ public class App {
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
-        //get: show all teams
-        get("/", (req, res) -> {
+        // READ
+
+        get("/", (req, res) -> { //show all teams
             Map<String, Object> model = new HashMap<>();
             ArrayList<Team> teams = Team.getAll();
             model.put("teams", teams);
-
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
-        //get: show an individual team
-        get("/teams/:id", (req, res) -> {
+        get("/teams/:id", (req, res) -> { //show an individual team
             Map<String, Object> model = new HashMap<>();
             int idOfTeamToFind = Integer.parseInt(req.params("id")); //pull id - must match route segment
             Team foundTeam = Team.findById(idOfTeamToFind); //use it to find post
@@ -54,8 +54,9 @@ public class App {
             return new ModelAndView(model, "team-detail.hbs"); //individual post page.
         }, new HandlebarsTemplateEngine());
 
-        //get: show a form to update team name
-        get("/teams/:id/update", (req, res) -> {
+        // UPDATE
+
+        get("/teams/:id/update", (req, res) -> { //show a form to update team name
             Map<String, Object> model = new HashMap<>();
             int idOfTeamToEdit = Integer.parseInt(req.params("id"));
             Team editTeam = Team.findById(idOfTeamToEdit);
@@ -63,8 +64,7 @@ public class App {
             return new ModelAndView(model, "team-form.hbs");
         }, new HandlebarsTemplateEngine());
 
-        //post: process a form to update team name
-        post("/teams/:id/update", (req, res) -> {
+        post("/teams/:id/update", (req, res) -> { //process a form to update team name
             Map<String, Object> model = new HashMap<>();
             String newTeamName = req.queryParams("teamName");
             int idOfTeamToEdit = Integer.parseInt(req.params("id"));
@@ -72,5 +72,21 @@ public class App {
             editPost.update(newTeamName); //don’t forget me
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
+
+        // DELETE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
