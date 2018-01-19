@@ -44,7 +44,7 @@ public class Sql2oTeamDaoTest {
         Team team = setupNewTeam();
         teamDao.add(team);
         Team foundTeam = teamDao.findById(team.getId());
-        assertEquals(team, foundTeam);
+        assertEquals(team.getTeamName(), foundTeam.getTeamName());
     }
 
     @Test
