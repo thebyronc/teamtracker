@@ -32,9 +32,9 @@ public class Team {
         return description;
     }
 
-    public void update(String teamName) {
-        this.teamName = teamName;
-    }
+//    public void update(String teamName) {
+//        this.teamName = teamName;
+//    }
 
     @Override
     public boolean equals(Object o) {

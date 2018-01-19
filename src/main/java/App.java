@@ -24,6 +24,12 @@ public class App {
             return new ModelAndView(model, "about.hbs");
         }, new HandlebarsTemplateEngine());
 
+        // DELETE
+        get("/teams/delete", (req, res) -> { //delete all teams
+            Map<String, Object> model = new HashMap<>();
+            teamDao.clearAllTeams();
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
 
         // CREATE
 
@@ -73,23 +79,13 @@ public class App {
         post("/teams/:id/update", (req, res) -> { //process a form to update team name
             Map<String, Object> model = new HashMap<>();
             String newTeamName = req.queryParams("teamName");
+            String newMembers = req.queryParams("members");
+            String newDescription = req.queryParams("description");
             int idOfTeamToEdit = Integer.parseInt(req.params("id"));
-            Team editPost = teamDao.findById(idOfTeamToEdit);
-            editPost.update(newTeamName);
+            Team editTeam = teamDao.findById(idOfTeamToEdit);
+            teamDao.update(idOfTeamToEdit, newTeamName, newMembers, newDescription);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
-
-        // DELETE
-
-
-
-
-
-
-
-
-
-
 
 
 

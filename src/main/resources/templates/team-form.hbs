@@ -7,6 +7,14 @@
         <label for="teamName">New team name:</label>
         <input class="w3-input" id="teamName" name="teamName" type="text" value="{{editTeam.teamName}}">
     </div>
+        <div class="w3-section">
+            <label for="members">Update members:</label>
+            <input class="w3-input" id="members" name="members" type="text" value="{{editTeam.members}}">
+        </div>
+        <div class="w3-section">
+            <label for="description">Change team description:</label>
+            <input class="w3-input" id="description" name="description" type="text" value="{{editTeam.description}}">
+        </div>
         <button type="submit" class="w3-btn btn-color">Update Team!</button>
     </form>
     {{else}}
