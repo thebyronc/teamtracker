@@ -49,7 +49,7 @@ public class Sql2oMemberDaoTest {
         Member member2 = new Member(team.getId(), "Byron", "thebyronc@gmail.com");
         memberDao.add(member1);
         memberDao.add(member2);
-        assertEquals(2, memberDao.getAllMemberByTeam(team.getId()));
+        assertEquals(2, memberDao.getAllMemberByTeam(team.getId()).size());
     }
 
     public Team setupNewTeam() {

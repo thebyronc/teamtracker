@@ -3,13 +3,9 @@
     {{#if editTeam}}
     <h2>EDIT TEAM</h2>
     <form action="/teams/{{editTeam.id}}/update" method="post" class="w3-container w3-card w3-padding-32 w3-white">
-    <div class="w3-section">
-        <label for="teamName">New team name:</label>
-        <input class="w3-input" id="teamName" name="teamName" type="text" value="{{editTeam.teamName}}">
-    </div>
         <div class="w3-section">
-            <label for="members">Update members:</label>
-            <input class="w3-input" id="members" name="members" type="text" value="{{editTeam.members}}">
+            <label for="teamName">New team name:</label>
+            <input class="w3-input" id="teamName" name="teamName" type="text" value="{{editTeam.teamName}}">
         </div>
         <div class="w3-section">
             <label for="description">Change team description:</label>
@@ -23,10 +19,6 @@
         <div class="w3-section">
             <label for="teamName">Team Name</label>
             <input class="w3-input" id="teamName" name="teamName" type="text">
-        </div>
-        <div class="w3-section">
-            <label for="members">Team Members(Separate each member by a ",").</label>
-            <input class="w3-input" id="members" name="members" type="text">
         </div>
         <div class="w3-section">
             <label for="description">Team Description</label>

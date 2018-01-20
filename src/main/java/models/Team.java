@@ -5,13 +5,12 @@ import java.util.Objects;
 
 public class Team {
     private String teamName;
-    private String members;
+
     private String description;
     private int id;
 
-    public Team(String teamName, String members, String description){
+    public Team(String teamName, String description){
         this.teamName = teamName;
-        this.members = members;
         this.description = description;
     }
 
@@ -24,9 +23,9 @@ public class Team {
     public String getTeamName() {
         return teamName;
     }
-    public String getMembers() {
-        return members;
-    }
+//    public String getMembers() {
+//        return members;
+//    }
 
     public String getDescription() {
         return description;
@@ -39,17 +38,16 @@ public class Team {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Team)) return false;
         Team team = (Team) o;
-        return id == team.id &&
-                Objects.equals(teamName, team.teamName) &&
-                Objects.equals(members, team.members) &&
-                Objects.equals(description, team.description);
+        return getId() == team.getId() &&
+                Objects.equals(getTeamName(), team.getTeamName()) &&
+                Objects.equals(getDescription(), team.getDescription());
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(teamName, members, description, id);
+        return Objects.hash(getTeamName(), getDescription(), getId());
     }
 }
