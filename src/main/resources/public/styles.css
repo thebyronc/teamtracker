@@ -15,7 +15,12 @@ h1 {
 .nameEdit {
   font-size: 12px;
   color: #C7C7C4;
+  text-decoration: none;
 }
+.nameEdit:hover {
+    text-decoration: underline;
+}
+
 h5 {
   font-weight: bold;
   font-size: 16px;
@@ -25,6 +30,10 @@ h5 {
   margin: 10px;
   float: left;
 }
-button a {
+a {
   text-decoration: none;
+}
+
+li a:hover {
+    text-decoration: underline;
 }

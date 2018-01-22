@@ -7,15 +7,13 @@
             <div class="w3-card-4">
 
                 <header class="w3-container w3-light-grey">
-                    <h3>{{ teamName }} </h3>
+                    <h3>{{ teamName }} <a href="/teams/{{id}}/delete" class="nameEdit" >...delete team</a></h3>
                 </header>
 
                 <div class="w3-container">
                     <h5>TEAM DESCRIPTION:</h5>
                     <p>{{description}}</p>
                     <hr>
-
-                    <p> members in team</p>
                 </div>
                 <a href="/teams/{{id}}" class="w3-button w3-block w3-dark-grey" >View Team Details</a>
 

@@ -44,6 +44,43 @@ public class Sql2oMemberDao implements MemberDao {
                     .executeAndFetchFirst(Member.class);
         }
     }
+
+    @Override
+    public void update(int id, String name, String email) {
+        String sql = "UPDATE members_three SET (name, email) = (:name, :email) WHERE id=:id";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("name", name)
+                    .addParameter("email", email)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
+
+
+    @Override
+    public void deleteById(int id) {
+        String sql = "DELETE FROM members_three WHERE id=:id";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    @Override
+    public void deleteAllMemberByTeam(int teamId) {
+        try(Connection con = sql2o.open()) {
+            con.createQuery("DELETE FROM members_three WHERE teamId = :teamId")
+                .addParameter("teamId", teamId)
+                .executeUpdate();
+        }
+    }
+
     @Override
     public void clearAllMembers() {
         String sql = "DELETE from members_three";

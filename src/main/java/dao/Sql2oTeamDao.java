@@ -35,6 +35,7 @@ public class Sql2oTeamDao implements TeamDao {
                     .executeAndFetch(Team.class); //fetch a list
         }
     }
+
     @Override
     public Team findById(int id){
         try(Connection con = sql2o.open()){
@@ -46,7 +47,7 @@ public class Sql2oTeamDao implements TeamDao {
 
     @Override
     public void update(int id, String teamName, String description) {
-        String sql = "UPDATE teams_two Set (teamName, description) = (:teamName, :description) WHERE id=:id";
+        String sql = "UPDATE teams_two SET (teamName, description) = (:teamName, :description) WHERE id=:id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("teamName", teamName)
@@ -60,7 +61,7 @@ public class Sql2oTeamDao implements TeamDao {
 
     @Override
     public void deleteById(int id) {
-        String sql = "DELETE from teams_two WHERE id=:id";
+        String sql = "DELETE FROM teams_two WHERE id=:id";
         try(Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)
@@ -72,7 +73,7 @@ public class Sql2oTeamDao implements TeamDao {
 
     @Override
     public void clearAllTeams() {
-        String sql = "DELETE from teams_two";
+        String sql = "DELETE FROM teams_two";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .executeUpdate();

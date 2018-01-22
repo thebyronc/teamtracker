@@ -1,16 +1,33 @@
 {{#partial "content"}}
-<h2>ADD MEMBER TO {{team.teamName}}  </h2>
-<form action="/teams/{{team.id}}/members/new" method="post" class="w3-container w3-card w3-padding-32 w3-white">
-    <div class="w3-section">
-        <label for="name">Member Name</label>
-        <input class="w3-input" id="name" name="name" type="text">
-    </div>
-    <div class="w3-section">
-        <label for="email">Member Email</label>
-        <input class="w3-input" id="email" name="email" type="text">
-    </div>
-    <button type="submit" class="w3-btn btn-color">Add Member!</button>
-</form>
+
+
+{{#if editMember}}
+    <h2>EDIT MEMBER</h2>
+    <form action="/teams/{{team.id}}/members/{{editMember.id}}/update" method="post" class="w3-container w3-card w3-padding-32 w3-white">
+        <div class="w3-section">
+            <label for="name">New member name:</label>
+            <input class="w3-input" id="name" name="name" type="text" value="{{editMember.name}}">
+        </div>
+        <div class="w3-section">
+            <label for="email">New member email:</label>
+            <input class="w3-input" id="email" name="email" type="text" value="{{editMember.email}}">
+        </div>
+        <button type="submit" class="w3-btn btn-color">Update Member!</button>
+    </form>
+{{else}}
+    <h2>ADD MEMBER TO {{team.teamName}}  </h2>
+    <form action="/teams/{{team.id}}/members/new" method="post" class="w3-container w3-card w3-padding-32 w3-white">
+        <div class="w3-section">
+            <label for="name">Member Name</label>
+            <input class="w3-input" id="name" name="name" type="text">
+        </div>
+        <div class="w3-section">
+            <label for="email">Member Email</label>
+            <input class="w3-input" id="email" name="email" type="text">
+        </div>
+        <button type="submit" class="w3-btn btn-color">Add Member!</button>
+    </form>
+{{/if}}
 
 
 {{/partial}}
