@@ -17,7 +17,7 @@ public class Sql2oMemberDao implements MemberDao {
 
     @Override
     public void add(Member member) {
-        String sql = "INSERT INTO members (memberName, email, teamId) VALUES (:memberName, :email, :teamId)";
+        String sql = "INSERT INTO members_three (teamId, memberName, email) VALUES (:teamId, :memberName, :email)";
         try(Connection con = sql2o.open()){
             int id = (int) con.createQuery(sql)
                     .bind(member)
@@ -31,7 +31,7 @@ public class Sql2oMemberDao implements MemberDao {
     @Override
     public List<Member> getAllMemberByTeam(int teamId) {
         try(Connection con = sql2o.open()) {
-            return con.createQuery("SELECT * FROM members WHERE teamId = :teamId")
+            return con.createQuery("SELECT * FROM members_three WHERE teamId = :teamId")
                     .addParameter("teamId", teamId)
                     .executeAndFetch(Member.class);
         }
@@ -39,14 +39,14 @@ public class Sql2oMemberDao implements MemberDao {
     @Override
     public Member findById(int id) {
         try(Connection con = sql2o.open()) {
-            return con.createQuery("SELECT * FROM members WHERE id = :id")
+            return con.createQuery("SELECT * FROM members_three WHERE id = :id")
                     .addParameter("id", id)
                     .executeAndFetchFirst(Member.class);
         }
     }
     @Override
     public void clearAllMembers() {
-        String sql = "DELETE from members";
+        String sql = "DELETE from members_three";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .executeUpdate();

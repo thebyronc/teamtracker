@@ -1,16 +1,16 @@
 SET MODE PostgreSQL;
 
-CREATE TABLE IF NOT EXISTS teams (
+CREATE TABLE IF NOT EXISTS teams_two (
   id int PRIMARY KEY auto_increment,
   teamname VARCHAR,
   description VARCHAR
 );
 
-CREATE TABLE IF NOT EXISTS members (
+CREATE TABLE IF NOT EXISTS members_three (
   id int PRIMARY KEY auto_increment,
-  memberName VARCHAR,
-  email VARCHAR,
-  teamId int
+  teamId int,
+  membername VARCHAR,
+  email VARCHAR
 );
 
 

@@ -1,7 +1,16 @@
 {{#partial "content"}}
     <h3>{{team.teamName}}   <a href="/teams/{{team.id}}/update" class="nameEdit" >...edit name</a></h3>
     <h5>Team Members:</h5>
-
+    <ul>
+        {{#if members}}
+            {{#each members}}
+                <li>{{member.name}}</li>
+            {{/each}}
+        {{else}}
+            <p>No Members!</p>
+        {{/if}}
+    </ul>
+    <a href="/teams/{{team.id}}/members/new">Add Member</a>
     <h5>Team Description:</h5>
     <p> {{team.description}}</p>
 {{/partial}}

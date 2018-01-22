@@ -1,21 +1,13 @@
 {{#partial "content"}}
-<h2>ADD MEMBER</h2>
-<form action="/members/member" method="post" class="w3-container w3-card w3-padding-32 w3-white">
+<h2>ADD MEMBER TO {{team.teamName}}  </h2>
+<form action="/teams/{{team.id}}/members/new" method="post" class="w3-container w3-card w3-padding-32 w3-white">
     <div class="w3-section">
         <label for="memberName">Member Name</label>
         <input class="w3-input" id="memberName" name="memberName" type="text">
     </div>
     <div class="w3-section">
-        <label for="members">Member Email</label>
-        <input class="w3-input" id="members" name="members" type="text">
-    </div>
-    <div class="w3-section">
-        <label for="teamId">Assign to Team</label>
-        <select name="teamId">
-            {{#each teams}}
-                <option value="{{teams.id}}">{{teamName}}</option>
-            {{/each}}
-        </select>
+        <label for="email">Member Email</label>
+        <input class="w3-input" id="email" name="email" type="text">
     </div>
     <button type="submit" class="w3-btn btn-color">Add Member!</button>
 </form>

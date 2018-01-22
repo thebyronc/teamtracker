@@ -50,9 +50,9 @@ public class Sql2oTeamDaoTest {
     @Test
     public void updateChangesTeamName() throws Exception {
         String initialTeamName = "Team 1";
-        Team team = new Team(initialTeamName, "One Guy", "Team Description Example 1");
+        Team team = new Team(initialTeamName,"Team Description Example 1");
         teamDao.add(team);
-        teamDao.update(team.getId(), "Mocha", "One Guy", "Team Description Example 1");
+        teamDao.update(team.getId(), "Mocha", "Team Description Example 1");
         Team updatedAnimal = teamDao.findById(team.getId());
         assertNotEquals(initialTeamName, updatedAnimal.getTeamName());
     }
@@ -74,7 +74,7 @@ public class Sql2oTeamDaoTest {
     }
 
     public Team setupNewTeam() {
-        return new Team("Team 1", "One guy", "Team Description Example 1");
+        return new Team("Team 1",  "Team Description Example 1");
     }
 
 

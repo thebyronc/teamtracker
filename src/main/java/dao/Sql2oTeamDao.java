@@ -17,7 +17,7 @@ public class Sql2oTeamDao implements TeamDao {
 
     @Override
     public void add(Team team) {
-        String sql = "INSERT INTO teams (teamName, description) VALUES (:teamName, :description)";
+        String sql = "INSERT INTO teams_two (teamName, description) VALUES (:teamName, :description)";
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql)
                     .bind(team)
@@ -31,14 +31,14 @@ public class Sql2oTeamDao implements TeamDao {
     @Override
     public List<Team> getAll(){
         try(Connection con = sql2o.open()) {
-            return con.createQuery("SELECT * FROM teams") //raw sql
+            return con.createQuery("SELECT * FROM teams_two") //raw sql
                     .executeAndFetch(Team.class); //fetch a list
         }
     }
     @Override
     public Team findById(int id){
         try(Connection con = sql2o.open()){
-            return con.createQuery("SELECT * FROM teams WHERE id=:id")
+            return con.createQuery("SELECT * FROM teams_two WHERE id=:id")
                     .addParameter("id", id)
                     .executeAndFetchFirst(Team.class);
         }
@@ -46,7 +46,7 @@ public class Sql2oTeamDao implements TeamDao {
 
     @Override
     public void update(int id, String teamName, String description) {
-        String sql = "UPDATE teams Set (teamName, description) = (:teamName, :description) WHERE id=:id";
+        String sql = "UPDATE teams_two Set (teamName, description) = (:teamName, :description) WHERE id=:id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("teamName", teamName)
@@ -60,7 +60,7 @@ public class Sql2oTeamDao implements TeamDao {
 
     @Override
     public void deleteById(int id) {
-        String sql = "DELETE from teams WHERE id=:id";
+        String sql = "DELETE from teams_two WHERE id=:id";
         try(Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)
@@ -72,7 +72,7 @@ public class Sql2oTeamDao implements TeamDao {
 
     @Override
     public void clearAllTeams() {
-        String sql = "DELETE from teams";
+        String sql = "DELETE from teams_two";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .executeUpdate();

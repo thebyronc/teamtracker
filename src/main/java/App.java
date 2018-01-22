@@ -52,17 +52,20 @@ public class App {
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
-        get("/members/new", (req, res) -> { //show a form to create a member
+        get("/teams/:id/members/new", (req, res) -> { //show a form to create a member
             Map<String, Object> model = new HashMap<>();
+            int idOfTeam = parseInt(req.params("id"));
+            Team foundTeam = teamDao.findById(idOfTeam);
+            model.put("team", foundTeam);
             return new ModelAndView(model, "member-form.hbs");
         }, new HandlebarsTemplateEngine());
 
-        post("/members/new", (request, response) -> { //process new member form
+        post("/teams/:id/members/new", (req, res) -> { //process new member form
             Map<String, Object> model = new HashMap<>();
-            String name = request.queryParams("name");
-            String email = request.queryParams("email");
-            String teamId = request.queryParams("teamId");
-            Member newMember = new Member(parseInt(teamId), name, email);
+            String name = req.queryParams("name");
+            String email = req.queryParams("email");
+            int teamId = parseInt(req.params("id"));
+            Member newMember = new Member(teamId, name, email);
             memberDao.add(newMember);
             model.put("members", newMember);
             return new ModelAndView(model, "success.hbs");
@@ -82,6 +85,10 @@ public class App {
             int idOfTeamToFind = parseInt(req.params("id"));
             Team foundTeam = teamDao.findById(idOfTeamToFind);
             model.put("team", foundTeam);
+
+            List<Member> members = memberDao.getAllMemberByTeam(idOfTeamToFind);
+            model.put("members", members);
+
             return new ModelAndView(model, "team-detail.hbs");
         }, new HandlebarsTemplateEngine());
 

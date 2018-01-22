@@ -53,6 +53,6 @@ public class Sql2oMemberDaoTest {
     }
 
     public Team setupNewTeam() {
-        return new Team("Team 1", "One guy", "Team Description Example 1");
+        return new Team("Team 1","Team Description Example 1");
     }
 }
