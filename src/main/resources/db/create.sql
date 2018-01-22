@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS teams_two (
 CREATE TABLE IF NOT EXISTS members_three (
   id int PRIMARY KEY auto_increment,
   teamId int,
-  membername VARCHAR,
+  name VARCHAR,
   email VARCHAR
 );
 
