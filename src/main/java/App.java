@@ -140,7 +140,8 @@ public class App {
             int idOfTeamToEdit = parseInt(req.params("id"));
             Team editTeam = teamDao.findById(idOfTeamToEdit);
             teamDao.update(idOfTeamToEdit, newTeamName, newDescription);
-            return new ModelAndView(model, "success.hbs");
+            model.put("team", editTeam);
+            return new ModelAndView(model, "member-success.hbs");
         }, new HandlebarsTemplateEngine());
 
         get("/teams/:id/members/:memberId/update", (req, res) -> { //show a form to update member
