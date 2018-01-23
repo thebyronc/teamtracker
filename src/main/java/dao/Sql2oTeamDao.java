@@ -12,7 +12,7 @@ public class Sql2oTeamDao implements TeamDao {
     private final Sql2o sql2o;
 
     public Sql2oTeamDao(Sql2o sql2o){
-        this.sql2o = sql2o; //making the sql2o object available everywhere so we can call methods in it
+        this.sql2o = sql2o;
     }
 
     @Override
@@ -31,8 +31,8 @@ public class Sql2oTeamDao implements TeamDao {
     @Override
     public List<Team> getAll(){
         try(Connection con = sql2o.open()) {
-            return con.createQuery("SELECT * FROM teams_two") //raw sql
-                    .executeAndFetch(Team.class); //fetch a list
+            return con.createQuery("SELECT * FROM teams_two")
+                    .executeAndFetch(Team.class);
         }
     }
 

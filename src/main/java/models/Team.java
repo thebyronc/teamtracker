@@ -23,17 +23,11 @@ public class Team {
     public String getTeamName() {
         return teamName;
     }
-//    public String getMembers() {
-//        return members;
-//    }
 
     public String getDescription() {
         return description;
     }
 
-//    public void update(String teamName) {
-//        this.teamName = teamName;
-//    }
 
     @Override
     public boolean equals(Object o) {

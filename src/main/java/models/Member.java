@@ -14,7 +14,6 @@ public class Member {
         this.email = email;
     }
 
-
     public void setName(String name){
         this.name = name;
     }
